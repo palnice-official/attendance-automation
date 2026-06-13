@@ -33,6 +33,13 @@ npm run preview    # serve the production build locally
 The contents of `dist/` are static files and can be hosted anywhere (GitHub
 Pages, Netlify, an internal server, or opened via any static file server).
 
+## Web deployment
+
+Pushes to the `main` branch are deployed automatically with GitHub Actions.
+The hosted app is available at:
+
+https://palnice-official.github.io/attendance-automation/
+
 ## How to use the app
 
 1. Upload the **biometric report** (Daily Attendance Detail Report) and the
