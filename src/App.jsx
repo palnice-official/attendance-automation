@@ -40,6 +40,11 @@ function Upload({ role, hint, state, onFile }) {
 function Stat({ v, k, tone }) { return <div className={'stat ' + (tone || '')}><div className="v">{v}</div><div className="k">{k}</div></div>; }
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('attendance-theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
   const [parsed, setParsed] = useState({});            // parsed structures
   const [buffers, setBuffers] = useState({});          // raw arraybuffers
   const [year, setYear] = useState(2026), [month, setMonth] = useState(1);
@@ -60,6 +65,12 @@ function App() {
 
   const cycle = useMemo(() => getPayrollCycle(year, month, settings), [year, month]);
   const monthLabel = `${MONTHNAMES[month - 1]}_${year}`;
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    localStorage.setItem('attendance-theme', theme);
+  }, [theme]);
 
   // load the built-in template once on mount (acts like a pre-supplied upload)
   useEffect(() => {
@@ -126,9 +137,21 @@ function App() {
           <img className="logo-img" src={ramaLogo} alt="RAMA" />
           <div><h1>Attendance Automation</h1><p>Biometric → payroll-ready workbook · 25th–24th cycle</p></div>
         </div>
-        <button className="btn btn-export" disabled={!result || busy} onClick={doExport}>
-          {busy ? <span className="spinner" /> : '⬇'} Export Attendance_Final_{monthLabel}.xlsx
-        </button>
+        <div className="topbar-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={() => setTheme(current => current === 'light' ? 'dark' : 'light')}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+          >
+            <span aria-hidden="true">{theme === 'light' ? '☾' : '☀'}</span>
+            <span>{theme === 'light' ? 'Dark' : 'Light'}</span>
+          </button>
+          <button className="btn btn-export" disabled={!result || busy} onClick={doExport}>
+            {busy ? <span className="spinner" /> : '⬇'} Export Attendance_Final_{monthLabel}.xlsx
+          </button>
+        </div>
       </div>
 
       {/* 1 UPLOAD */}
