@@ -177,7 +177,7 @@ function App() {
           const wd = d.getUTCDay(); const sat5 = wd === 6;
           return <div key={i} className={'day' + (wd === 0 ? ' wo' : '') + (sat5 ? ' sat5' : '')}><div className="d">{pad(d.getUTCDate())}</div><div className="w">{WD[wd]}</div></div>;
         })}</div>
-        <div className="sub" style={{ marginTop: 8 }}><span className="chip c-WO">Sun</span> weekly off (all) · <span className="chip" style={{ background: '#eef6f5', borderColor: '#cfe6e2' }}>Sat</span> off only for 5-day staff · fixed rules: ≥9h → P, 8.5–9h → P (review), &lt;8.5h → half, all unexplained absence → L, comp-off flagged only.</div>
+        <div className="sub" style={{ marginTop: 8 }}><span className="chip c-WO">Sun</span> weekly off (all) · <span className="chip c-sat">Sat</span> off only for 5-day staff · fixed rules: ≥9h → P, 8.5–9h → P (review), &lt;8.5h → half, all unexplained absence → L, comp-off flagged only.</div>
       </div>
       <div className="card" style={{ marginTop: 14 }}>
         <details>

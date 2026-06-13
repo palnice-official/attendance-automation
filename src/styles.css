@@ -22,6 +22,23 @@
     --topbar: rgba(238, 241, 244, .86);
     --button-hover: #1f3350;
     --disabled: #b7c2cb;
+    --disabled-text: #243244;
+    --strong-bg: #0f1b2d;
+    --strong-text: #ffffff;
+    --sat-bg: #eef6f5;
+    --sat-border: #cfe6e2;
+    --sat-text: #315f5a;
+    --purple: #6d28d9;
+    --purple-tint: #f3ecfb;
+    --purple-border: #ddc9f5;
+    --cyan: #0e7490;
+    --cyan-tint: #e8f4f7;
+    --cyan-border: #bfe3ec;
+    --green-border: #bfe0c6;
+    --red-border: #f0c8b8;
+    --amber-border: #f0d9ad;
+    --blue-border: #c7d6f7;
+    --review-hover: #fbe9cf;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
@@ -50,6 +67,23 @@
     --topbar: rgba(11, 18, 32, .88);
     --button-hover: #33445e;
     --disabled: #465469;
+    --disabled-text: #d8e1ee;
+    --strong-bg: #dbe7f7;
+    --strong-text: #0b1220;
+    --sat-bg: #173b3b;
+    --sat-border: #2c6662;
+    --sat-text: #a9e8df;
+    --purple: #d3b7ff;
+    --purple-tint: #30234b;
+    --purple-border: #604b82;
+    --cyan: #8bdced;
+    --cyan-tint: #153642;
+    --cyan-border: #2d6675;
+    --green-border: #336b47;
+    --red-border: #75403f;
+    --amber-border: #72512b;
+    --blue-border: #3f5e91;
+    --review-hover: #4a321b;
   }
 
   * {
@@ -190,8 +224,8 @@
 
   .eyebrow .num {
     font-family: var(--mono);
-    background: var(--ink);
-    color: #fff;
+    background: var(--strong-bg);
+    color: var(--strong-text);
     width: 20px;
     height: 20px;
     border-radius: 5px;
@@ -366,12 +400,17 @@
 
   .day.wo {
     background: var(--blue-tint);
-    border-color: #c7d6f7
+    border-color: var(--blue-border)
   }
 
   .day.sat5 {
-    background: #eef6f5;
-    border-color: #cfe6e2
+    background: var(--sat-bg);
+    border-color: var(--sat-border);
+    color: var(--sat-text)
+  }
+
+  .day.sat5 .w {
+    color: var(--sat-text)
   }
 
   .btn {
@@ -390,7 +429,7 @@
 
   .btn-primary {
     background: var(--teal);
-    color: #fff
+    color: var(--strong-text)
   }
 
   .btn-primary:hover {
@@ -399,6 +438,7 @@
 
   .btn-primary:disabled {
     background: var(--disabled);
+    color: var(--disabled-text);
     cursor: not-allowed
   }
 
@@ -413,8 +453,8 @@
   }
 
   .btn-export {
-    background: var(--ink);
-    color: #fff
+    background: var(--strong-bg);
+    color: var(--strong-text)
   }
 
   .btn-export:hover {
@@ -423,6 +463,7 @@
 
   .btn-export:disabled {
     background: var(--disabled);
+    color: var(--disabled-text);
     cursor: not-allowed
   }
 
@@ -449,7 +490,7 @@
   }
 
   .stat.alert {
-    border-color: #f0c8b8;
+    border-color: var(--red-border);
     background: var(--red-tint)
   }
 
@@ -458,7 +499,7 @@
   }
 
   .stat.warn {
-    border-color: #f0d9ad;
+    border-color: var(--amber-border);
     background: var(--amber-tint)
   }
 
@@ -561,7 +602,7 @@
   }
 
   .row-review:hover {
-    background: #fbe9cf
+    background: var(--review-hover)
   }
 
   .chip {
@@ -578,37 +619,43 @@
   .c-P {
     background: var(--green-tint);
     color: var(--green);
-    border-color: #bfe0c6
+    border-color: var(--green-border)
   }
 
   .c-L {
     background: var(--red-tint);
     color: var(--red-strong);
-    border-color: #f0c8b8
+    border-color: var(--red-border)
   }
 
   .c-WO {
     background: var(--blue-tint);
     color: var(--blue);
-    border-color: #c7d6f7
+    border-color: var(--blue-border)
+  }
+
+  .c-sat {
+    background: var(--sat-bg);
+    color: var(--sat-text);
+    border-color: var(--sat-border)
   }
 
   .c-HOL {
-    background: #f3ecfb;
-    color: #6d28d9;
-    border-color: #ddc9f5
+    background: var(--purple-tint);
+    color: var(--purple);
+    border-color: var(--purple-border)
   }
 
   .c-MSP {
     background: var(--amber-tint);
     color: var(--amber);
-    border-color: #f0d9ad
+    border-color: var(--amber-border)
   }
 
   .c-LV {
-    background: #e8f4f7;
-    color: #0e7490;
-    border-color: #bfe3ec
+    background: var(--cyan-tint);
+    color: var(--cyan);
+    border-color: var(--cyan-border)
   }
 
   .c-half {
@@ -729,7 +776,7 @@
 
   .errbox {
     background: var(--red-tint);
-    border: 1px solid #f0c8b8;
+    border: 1px solid var(--red-border);
     color: var(--red-strong);
     border-radius: 10px;
     padding: 12px 14px;
