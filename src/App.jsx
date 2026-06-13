@@ -12,7 +12,7 @@ import { runEngine } from './lib/runEngine.js';
 import { exportFinalWorkbook } from './lib/exportEngine.js';
 import { TEMPLATE_B64 } from './data/template.js';
 import { HOLIDAY_DATA } from './data/holidays.js';
-import { RAMA_LOGO } from './data/logo.js';
+import ramaLogo from './data/svg-to.svg';
 
 const MONTHNAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const codeClass = c => {
@@ -123,7 +123,7 @@ function App() {
     <div>
       <div className="topbar">
         <div className="brand">
-          <img className="logo-img" src={RAMA_LOGO} alt="RAMA" />
+          <img className="logo-img" src={ramaLogo} alt="RAMA" />
           <div><h1>Attendance Automation</h1><p>Biometric → payroll-ready workbook · 25th–24th cycle</p></div>
         </div>
         <button className="btn btn-export" disabled={!result || busy} onClick={doExport}>
